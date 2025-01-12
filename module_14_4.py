@@ -54,9 +54,9 @@ async def main_menu(message):
 
 @dp.message_handler(text = 'Купить')
 async def get_buying_list(message):
-    for id, title,description,price in products:
+    for products_id, title,description,price in products:
         await asyncio.sleep(1)
-        with open(f'{id}.png', 'rb') as img:
+        with open(f'{products_id}.png', 'rb') as img:
             await message.answer_photo(img, f'"Название: {title} | Описание: {description} | Цена: {price}"')
             await asyncio.sleep(1)
     await message.answer("Выберите продукт для покупки:", reply_markup = inline_menu)
